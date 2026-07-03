@@ -22,3 +22,53 @@ Through exploratory data analysis and visualizations, the project identifies pat
 
 
 ## Data Cleaning Process
+
+During Data exploration we found that no of guests are having negative values.So we clean the negative values
+
+```python
+
+df_bookings[df_bookings.no_guests<=0]
+```
+
+Identify the no of guest which are having negative value
+
+```python
+
+df_bookings=df_bookings[df_bookings.no_guests>0]
+```
+
+Dealing with records which are having no_of_guests more than 0
+
+During Data exploration also we find maximum revenue is having absurd value
+
+```python
+
+avg,std=df_bookings.revenue_generated.mean(),df_bookings.revenue_generated.std()
+
+higher_limit=avg+3*std
+higher_limit
+
+lower_limit=avg-3*std
+lower_limit
+
+df_bookings[df_bookings.revenue_generated>higher_limit]
+
+df_bookings=df_bookings[df_bookings.revenue_generated<higher_limit]
+```
+
+During Data exploration we also find some null values in ratings_given columns.But it is ok to have Null values in ratings_given column
+because every customer will not give rating
+
+```python
+
+df_bookings.isnull().sum()
+```
+
+But we find null values in capacity coloumns and we replace it with median value
+
+```python
+
+df_agg_bookings.isnull().sum()
+
+df_agg_bookings["capacity"].fillna(df_agg_bookings["capacity"].median(),inplace=True)
+```
