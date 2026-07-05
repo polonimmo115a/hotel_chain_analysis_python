@@ -119,3 +119,63 @@ fig=df.groupby("city_x")["occ_pct"].mean().sort_values().plot(kind="bar")
 
   df.groupby("day_type")["occ_pct"].mean().round(2)
   ```
+
+**Conclusion:** weekend occupancy is better
+
+**Why it is matter:**
+
+- **Profit margin analysis** weeekend guest typically spend more on premium food and beverage,spas and room upgrade making them more proftable
+- **Resource allocation** it dictates the budgeting for housekeeping and staff scheduling
+- **Dynamic Pricing** it helps to determine whether a hotel can apply premium rates on high demand days or not
+
+**Business Recommendation:**
+
+- **Mid week coporate packages** target the sluggish days(monday to thursday) by offering work from hotel packages,reliable wifi bundles and corporate loyalty programs
+- **Data driven staffing**
+
+### Business Question no 3
+- Revenue realized per city
+
+ ```python
+
+  df_bookings_all=pd.merge(df_bookings,df_hotels,on="property_id")
+df_bookings_all.head()
+
+df_bookings_all.groupby("city")["revenue_realized"].sum().sort_values(ascending=False)
+```
+**Conclusion:** Mumbai performs good but hyderabad and delhi are not performing well
+
+**Why it is matter:**
+
+- It is a critical business question because it reveals actual cash flow and financial health of hotel across different locations,highlighting the market demand
+
+**Business Recommendation:**
+
+- **Optimize the pricing strategy** cities with higher realized-revenue should have premium pricing while lower revenue-realized cities can use promotional discounts
+- **Change in cancellation policy** if cancellation are high then implement stricter cancellation policies and give early bird booking discounts
+- **Relocate the marketing budgets**
+
+### Business Question no 3
+- Show month by month revenue
+
+  ```python
+
+  df_date["date"] = pd.to_datetime(df_date["date"])
+
+  df_bookings_all["check_in_date"] = pd.to_datetime(df_bookings_all["check_in_date"],format='mixed')
+
+  df_bookings_all = pd.merge(df_bookings_all, df_date, left_on="check_in_date", right_on="date")
+
+  df_bookings_all.groupby("mmm yy")["revenue_realized"].sum()
+  ```
+
+ **Conclusion:** May month is having higher revenue genarated compare to other months
+
+ **Why it is matter:** 
+ - it reveals highly predictable seasonal demand trends,uncover cyclical booking patterns and highlights the impact of local events.It empowers the manager to align the roomrates,optimize the staffing and stabilize the cash flow throughtout the year
+
+ **Business Recommendation:**
+ - implement tiered pricing
+ - introduce stategic packages for low revenue months
+  
+
