@@ -72,3 +72,15 @@ df_agg_bookings.isnull().sum()
 
 df_agg_bookings["capacity"].fillna(df_agg_bookings["capacity"].median(),inplace=True)
 ```
+
+## Some Important Business Query
+
+- Average Occupancy rate per city
+
+ ```python
+
+ df=pd.merge(df,df_hotels,on="property_id")
+
+fig=df.groupby("city_x")["occ_pct"].mean().sort_values().plot(kind="bar")
+```
+
