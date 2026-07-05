@@ -124,7 +124,7 @@ fig=df.groupby("city_x")["occ_pct"].mean().sort_values().plot(kind="bar")
 
 **Why it is matter:**
 
-- **Profit margin analysis** weeekend guest typically spend more on premium food and beverage,spas and room upgrade making them more proftable
+- **Profit margin analysis** weekend guest typically spend more on premium food and beverage,spas and room upgrade making them more proftable
 - **Resource allocation** it dictates the budgeting for housekeeping and staff scheduling
 - **Dynamic Pricing** it helps to determine whether a hotel can apply premium rates on high demand days or not
 
@@ -155,7 +155,7 @@ df_bookings_all.groupby("city")["revenue_realized"].sum().sort_values(ascending=
 - **Change in cancellation policy** if cancellation are high then implement stricter cancellation policies and give early bird booking discounts
 - **Relocate the marketing budgets**
 
-### Business Question no 3
+### Business Question no 4
 - Show month by month revenue
 
   ```python
@@ -178,4 +178,15 @@ df_bookings_all.groupby("city")["revenue_realized"].sum().sort_values(ascending=
  - implement tiered pricing
  - introduce stategic packages for low revenue months
   
+### Business Question no 5
+-Revenue realized per hotel type
 
+```python
+
+df_bookings_category=pd.merge(df_bookings,df_hotels,on="property_id")
+df_bookings_category.head(3)
+
+df_bookings_category.groupby("category")["revenue_realized"].sum()
+```
+
+ **Conclusion:** business class is having less revenue over luxury class 
