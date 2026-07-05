@@ -75,6 +75,8 @@ df_agg_bookings["capacity"].fillna(df_agg_bookings["capacity"].median(),inplace=
 
 ## Some Important Business Query
 
+### Business Question no 1
+
 - Average Occupancy rate per city
 
  ```python
@@ -108,7 +110,7 @@ fig=df.groupby("city_x")["occ_pct"].mean().sort_values().plot(kind="bar")
 - establish corporate and travel agent partnerships
 - develop loyalty programs
 
-
+### Business Question no 2
 - When was the occupancy is better?weekend or weekdays?
 
   ```python
