@@ -83,4 +83,37 @@ df_agg_bookings["capacity"].fillna(df_agg_bookings["capacity"].median(),inplace=
 
 fig=df.groupby("city_x")["occ_pct"].mean().sort_values().plot(kind="bar")
 ```
+![City Occupancy Chart](https://github.com/polonimmo115a/hotel_chain_analysis_python/blob/main/city_occupancy_chart.png)
 
+**conclusion:** Bangalore is having least avg occupancy rate
+
+**Why it is matter:**
+
+- **Market demand assesment:** it reveals whether the destination is a high demand tourist hub or an emerging business district
+- **Pricing & Revenue Strategy:** if a city has a consistently high occupancy rate,hotels can raise their average daily rate(ADR).Conversely low
+  occupancy cities may require promotional discounts to stay competitive
+- **Operational efficiency:** it guides staffing levels
+
+**Business Recommendation:**
+
+**For cities with high average occupancy**
+
+- Implement dynamic pricing
+- Focus on upselling(focus on maximizing revenue per available room)
+- Target high value segments(shift marketing budget towards high spending corporate clients rather than relying on deep discount booking channels
+
+**For cities with low average occupancy**
+
+- introduce value add packages
+- establish corporate and travel agent partnerships
+- develop loyalty programs
+
+
+- When was the occupancy is better?weekend or weekdays?
+
+  ```python
+
+   df = pd.merge(df, df_date, left_on="check_in_date", right_on="date")
+
+  df.groupby("day_type")["occ_pct"].mean().round(2)
+  ```
